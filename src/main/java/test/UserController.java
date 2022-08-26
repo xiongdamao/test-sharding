@@ -18,9 +18,15 @@ public class UserController {
     private final UserServiceImpl service;
 
 
+    @GetMapping("/list")
+    public List<User> list() {
+        MDC.put("mdcTraceNum", "12345");
+        return service.list();
+    }
+
     @GetMapping("/merge")
     public int merge() {
-         MDC.put("mdcTraceNum","12345");
+        MDC.put("mdcTraceNum", "12345");
         return service.merge(User.builder().id("id00").age(12).name("test_name").email("test@test.com").build());
     }
 }
