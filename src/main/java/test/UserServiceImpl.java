@@ -1,6 +1,7 @@
 package test;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +14,13 @@ import org.springframework.stereotype.Service;
  * @since 2022-05-28
  */
 @Service
+@Slf4j
 public class UserServiceImpl {
     @Autowired
     UserMapper baseMapper;
 
     public int merge(User user) {
+        log.info("{}",user);
         return this.baseMapper.merge(user);
     }
 }

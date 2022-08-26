@@ -1,6 +1,8 @@
 package test;
 
+import ch.qos.logback.classic.helpers.MDCInsertingServletFilter;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,7 @@ public class UserController {
 
     @GetMapping("/merge")
     public int merge() {
+         MDC.put("mdcTraceNum","12345");
         return service.merge(User.builder().id("id00").age(12).name("test_name").email("test@test.com").build());
     }
 }
